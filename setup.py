@@ -20,6 +20,7 @@ setup(
     license = 'GPL3',
     keywords = ['iqoptionapi', ''],
     install_requires = [
+        "websocket-client==0.56"
     ],
     dependency_links=[
         'git+git://github.com/iqoptionapi/iqoptionapi.git',
