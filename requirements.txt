@@ -12,7 +12,7 @@ html5lib==1.0.1
 idna==2.8
 iniconfig==1.1.1
 ipaddr==2.2.0
-iqoptionapi==6.8.9.1
+git+git://github.com/iqoptionapi/iqoptionapi.git
 isort==5.8.0
 lazy-object-proxy==1.6.0
 lockfile==0.12.2

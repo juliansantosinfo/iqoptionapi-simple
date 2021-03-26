@@ -452,7 +452,7 @@ class IQ_Option(stable_api.IQ_Option):
 
         return candles_data
 
-    def get_candles_realtime(self, asset, intervals, buffer=1, waiting_time=1, max_candles=5):
+    def get_candles_realtime(self, asset, intervals, buffer=1, waiting_time=1, max_candles=5, list_candles=[]):
         """
             @type method
             @description Get candles in real time.
@@ -471,7 +471,7 @@ class IQ_Option(stable_api.IQ_Option):
             while run_stream:
 
                 # Check max candles.
-                if in_candle == max_candles:
+                if in_candle > max_candles:
                     run_stream = False
 
                 # Wait for the candle break.
@@ -489,12 +489,12 @@ class IQ_Option(stable_api.IQ_Option):
                     candles[candle]['min_at'] = timestamp_converter(candles[candle]['min_at'])
                     candles[candle]['max_at'] = timestamp_converter(candles[candle]['max_at'])
 
-
+                    # Define asset, size and color candle.
                     self.set_candle_asset(candles[candle], asset)
                     self.set_candle_color(candles[candle])
 
-                    yield candles[candle]
-
+                    # Append in list and increment count.
+                    list_candles.append(candles[candle])
                     in_candle += 1
 
         except ValueError as error:
