@@ -1,4 +1,3 @@
-
 import time
 from iqoptionapi_simple import IQ_Option
 
