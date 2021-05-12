@@ -49,11 +49,11 @@ print("get_assets_open_turbo", assets)
 assets = IQ.get_assets_open_digital()
 print("get_assets_open_digital", assets)
 
-assets_exist = IQ.assets_exist(assets_name="EURUSD")
-print("assets_exist", assets_exist)
+asset_exist = IQ.assets_exist(asset="EURUSD")
+print("assets_exist", asset_exist)
 
-is_open = IQ.assets_is_open(assets_name="EURUSD")
-print("assets_is_open", assets_exist)
+is_open = IQ.assets_is_open(asset="EURUSD")
+print("assets_is_open", asset_exist)
 
 iasset_name = IQ.get_asset_name_by_id(asset_id=1)
 print("get_asset_name_by_id", iasset_name)
