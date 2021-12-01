@@ -1,8 +1,8 @@
 import time
 from iqoptionapi_simple import IQ_Option
 
-username = "julian.santos.trash@gmail.com"
-password = "mypassisiqoption"
+username = "your_email@domain.com"
+password = "your_password"
 profile = None
 conection = False
 reason = None
