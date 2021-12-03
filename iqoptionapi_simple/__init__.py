@@ -387,3 +387,47 @@ class IQ_Option(stable_api.IQ_Option):
             self.stop_candles_stream(asset, intervals)
 
         return
+
+    def get_candles_realtime_v2(self, asset : str, intervals : int, buffer=1, waiting_time=1, stop_stream=False, callback=None):
+        """ Get candles in real time."""
+
+        # Check callback.
+        if not callback:
+            return
+
+        # Start a candle stream.
+        self.start_candles_stream(asset, intervals, buffer)
+
+        try:
+
+            # Scroll through incoming candles taking values.
+            while not stop_stream:
+
+                # Wait for the candle break.
+                time.sleep(waiting_time)
+
+                # The candle stream.
+                candles = self.get_realtime_candles(asset,  intervals)
+
+                for candle in candles:
+
+                    # Converter dates.
+                    candles[candle]['at'] = timestamp_converter(candles[candle]['at'])
+                    candles[candle]['from'] = timestamp_converter(candles[candle]['from'])
+                    candles[candle]['to'] = timestamp_converter(candles[candle]['to'])
+                    candles[candle]['min_at'] = timestamp_converter(candles[candle]['min_at'])
+                    candles[candle]['max_at'] = timestamp_converter(candles[candle]['max_at'])
+
+                    # Define asset, size and color candle.
+                    self.set_candle_asset(candles[candle], asset)
+                    self.set_candle_color(candles[candle])
+
+                    # Append in list and increment count.
+                    callback(candles[candle])
+
+        except ValueError as error:
+            pass
+        finally:
+            self.stop_candles_stream(asset, intervals)
+
+        return

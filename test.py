@@ -63,7 +63,7 @@ print("get_candles", candles)
 
 list_candles = []
 IQ.get_candles_realtime("EURUSD", 60, buffer=1, waiting_time=1, max_candles=5, list_candles=list_candles)
-while len(list_candles) == 0:
-    time.sleep(1)
-    continue
+print("get_candles_realtime", list_candles)
+
+IQ.get_candles_realtime_v2("EURUSD", 60, buffer=1, waiting_time=1, stop_stream=False, callback=print)
 print("get_candles_realtime", list_candles)
