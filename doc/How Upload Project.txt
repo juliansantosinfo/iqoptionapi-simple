@@ -1,0 +1,11 @@
+# Install packets Setuptools Wheel Twine.
+pip install setuptools wheel twine
+
+# Compile the packages.
+python setup.py sdist
+python setup.py bdist_wheel
+
+# Make the package shipping to the repository.
+twine upload -r pypi dist/*
+or
+twine upload -r testpypi dist/*

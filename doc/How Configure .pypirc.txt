@@ -1,0 +1,17 @@
+1 - Create a file with the name .pireck in the Home.
+2 - Add the data below in the file.
+3 - Replace credentials.
+
+[distutils]
+index-servers =
+    pypi
+    testpypi
+
+[pypi]
+username = username
+password = password
+
+[testpypi]
+repository: https://test.pypi.org/legacy/
+username = username
+password = password

@@ -3,6 +3,10 @@ from datetime import datetime
 from dateutil import tz
 from iqoptionapi import stable_api, country_id as Country
 
+
+__version__ = "0.0.1"
+
+
 def timestamp_converter(date_time, format='%d/%m/%Y %H:%M:%S'):
     """ Convert datetime in timestamp to timezone America/Sao Paulo."""
 
@@ -17,11 +21,10 @@ def timestamp_converter(date_time, format='%d/%m/%Y %H:%M:%S'):
     date_time = date_time.astimezone(tz.gettz('America/Sao Paulo'))
 
     return date_time.strftime(format)
-        
+
+      
 class IQ_Option(stable_api.IQ_Option):
     """ This class is a wrapping that simplifies the use of iQOptionapi."""
-
-    __version__ = "0.0.1"
 
     def __init__(self, email : str, password : str, active_account_type="PRACTICE"):
         super().__init__(email, password, active_account_type=active_account_type)
