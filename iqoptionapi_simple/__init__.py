@@ -4,7 +4,7 @@ from dateutil import tz
 from iqoptionapi import stable_api, country_id as Country
 
 
-__version__ = "0.0.1"
+__version__ = "0.0.2"
 
 
 def timestamp_converter(date_time, format='%d/%m/%Y %H:%M:%S'):
