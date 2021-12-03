@@ -9,7 +9,7 @@ This api is wrapper to on [iqoptionapi](https://github.com/iqoptionapi/iqoptiona
 
 ## Installation
 
-- Run `pip install https://github.com/iqoptionapi/iqoptionapi/archive/refs/tags/7.0.0.tar.gz`
+- Run `pip install -U git+git://github.com/iqoptionapi/iqoptionapi.git`
 - Run `pip install iqoptionapi-simple`
 
 ## Exxemple

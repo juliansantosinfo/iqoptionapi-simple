@@ -411,19 +411,23 @@ class IQ_Option(stable_api.IQ_Option):
 
                 for candle in candles:
 
-                    # Converter dates.
-                    candles[candle]['at'] = timestamp_converter(candles[candle]['at'])
-                    candles[candle]['from'] = timestamp_converter(candles[candle]['from'])
-                    candles[candle]['to'] = timestamp_converter(candles[candle]['to'])
-                    candles[candle]['min_at'] = timestamp_converter(candles[candle]['min_at'])
-                    candles[candle]['max_at'] = timestamp_converter(candles[candle]['max_at'])
+                    try:
+                        # Converter dates.
+                        candles[candle]['at'] = timestamp_converter(candles[candle]['at'])
+                        candles[candle]['from'] = timestamp_converter(candles[candle]['from'])
+                        candles[candle]['to'] = timestamp_converter(candles[candle]['to'])
+                        candles[candle]['min_at'] = timestamp_converter(candles[candle]['min_at'])
+                        candles[candle]['max_at'] = timestamp_converter(candles[candle]['max_at'])
 
-                    # Define asset, size and color candle.
-                    self.set_candle_asset(candles[candle], asset)
-                    self.set_candle_color(candles[candle])
+                        # Define asset, size and color candle.
+                        self.set_candle_asset(candles[candle], asset)
+                        self.set_candle_color(candles[candle])
 
-                    # Append in list and increment count.
-                    callback(candles[candle])
+                        # Append in list and increment count.
+                        callback(candles[candle])
+                        
+                    except ValueError as error:
+                        pass
 
         except ValueError as error:
             pass
